@@ -1,5 +1,5 @@
 //declare variables
-int count = 300;
+int count = 500;
 float [] x = new float[count];
 float [] y = new float[count];
 float [] velX = new float[count];
@@ -14,8 +14,8 @@ void setup() {
   for(int i = 0; i < count; i++) {
     x[i] = width/2;
     y[i] = height/2;
-    velX[i] = random(-5, 5);
-    velY[i] = random(-5, 5);
+    velX[i] = random(-10, 10);
+    velY[i] = random(-10, 10);
     diam[i] = random(30, 80);
     currentColor[i] = color(random(0,255),random(0,255),random(0,255));
   }

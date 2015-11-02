@@ -6,10 +6,11 @@ void setup() {
   size(500,500);
   c[0] = new Circle(10, 10, 10, 10);
   c[1] = new Circle(50, 100, 100, -10);
-
+  ellipseMode(CENTER);
 }
 
 void draw() {
+  background(0);
   while(i < c.length) {
     c[i].update();
     i++;
@@ -28,6 +29,15 @@ class Circle {
   void update() {
     fill(255);
     ellipse(x, y, radius, radius);
-    println(i);
+    
+    y += vel;
+    //bounce ball if it hits walls
+    if (y + radius > height) {
+      vel = -abs(vel);
+      println(y);
+    } else if (y - radius <= 0) {
+      vel = abs(vel);
+    }
+    
   }
 }

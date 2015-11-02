@@ -1,5 +1,5 @@
 //declare variables
-int count = 500;
+int count = 2;
 float [] x = new float[count];
 float [] y = new float[count];
 float [] velX = new float[count];
@@ -26,13 +26,15 @@ void draw() {
   for(int i = 0; i < count; i++) {
     //draw background to cover previous frame
   
+    fill(currentColor[i]); //fill the circle
+  
     //draw ball
     ellipse(x[i], y[i], diam[i], diam[i]);
   
     //add velocity to position
     x[i] += velX[i];
     y[i] += velY[i];
-  
+    
     //bounce ball if it hits walls
     if (x[i] + diam[i]/2 >= width) {
       velX[i] = -abs(velX[i]);    //if the ball hits the right wall, assign x velocity the negative version of itself
@@ -48,6 +50,5 @@ void draw() {
       velY[i] = abs(velY[i]);
       currentColor[i] = color(random(0,255), random(0,255), random(0,255)); //change color
     }
-  fill(currentColor[i]);
   }
 }

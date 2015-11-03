@@ -1,5 +1,5 @@
 //declare variables
-int count = 2;
+int count = 300;
 float [] x = new float[count];
 float [] y = new float[count];
 float [] velX = new float[count];

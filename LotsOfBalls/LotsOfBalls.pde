@@ -1,5 +1,5 @@
-int count = 3;
-Circle[] c = new Circle[3];
+int count = 5;
+Circle[] c = new Circle[count];
 int i = 0;
 
 void setup() {
@@ -7,6 +7,8 @@ void setup() {
   c[0] = new Circle(10, 100, 10, 1, 1);
   c[1] = new Circle(20, 150, 100, 1, -1);
   c[2] = new Circle(10, 200, 200, 2, -2);
+  c[3] = new Circle(15, 250, 0, 2, -2);
+  c[4] = new Circle(15, 250, 200, 2, -2);
   ellipseMode(RADIUS);
 }
 
@@ -61,12 +63,21 @@ class Circle {
           //float distanceBetweeny = dist(0, y, 0, c[j].y);
           
           //for x direction using equation
-          velx = (velx + 2*c[j].x)/2;
-          c[j].x = (c[j].x + 2*velx)/2;
-          
+          /*velx = (velx + 2*c[j].velx)/2;
+          c[j].velx = (c[j].x + 2*velx)/2;
+          println(velx);
           //for y direction
-          vely = (vely + 2*c[j].y)/2;
-          c[j].y = (c[j].y + 2*vely)/2;
+          vely = (vely + 2*c[j].vely)/2;
+          c[j].vely = (c[j].vely + 2*vely)/2;
+            */
+          float oldvelx = velx;
+          float oldvely = vely;
+          velx = c[j].velx;
+          vely = c[j].vely;
+          
+          c[j].velx = oldvelx;
+          c[j].vely = oldvely;
+          
 
           /*
           float percentTotalx = distanceBetweenx/(distanceBetweenx+distanceBetweeny);

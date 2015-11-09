@@ -53,10 +53,22 @@ class Circle {
       if(j != i) {
         //make sure it's not touching circle
         float distanceBetweenCenters = dist(x, y, c[j].x, c[j].y);
+        //http://www.iceplug.us/cpool.htm
+        //vx1+2vx2/2 = vx2f
+        //vx2 + 2vx1/2
         if(distanceBetweenCenters < radius + c[j].radius) {
-          float distanceBetweenx = dist(x, 0, c[j].x, 0);
-          float distanceBetweeny = dist(0, y, 0, c[j].y);
-        //see relatively if the centers want to bounce off more on the top or more on the side
+          //float distanceBetweenx = dist(x, 0, c[j].x, 0);
+          //float distanceBetweeny = dist(0, y, 0, c[j].y);
+          
+          //for x direction using equation
+          velx = (velx + 2*c[j].x)/2;
+          c[j].x = (c[j].x + 2*velx)/2;
+          
+          //for y direction
+          vely = (vely + 2*c[j].y)/2;
+          c[j].y = (c[j].y + 2*vely)/2;
+
+          /*
           float percentTotalx = distanceBetweenx/(distanceBetweenx+distanceBetweeny);
           float percentTotaly = distanceBetweeny/(distanceBetweenx+distanceBetweeny);
           //note: this is a pseudo theory and does not reflect actual physics: in real life you would need to find the angle
@@ -64,9 +76,9 @@ class Circle {
           velx = (velx < 0) ? totalVelocity * percentTotalx: -totalVelocity * percentTotalx; //if it's negative, set new percentage of total velocity  to positive, vice versa
           vely = (vely < 0) ? totalVelocity * percentTotaly: -totalVelocity * percentTotaly;
           float totalVelocityofOtherBall = sqrt(pow(c[j].velx, 2)+pow(c[j].vely, 2));
-          println(totalVelocity);
           c[j].velx = (c[j].velx < 0) ? totalVelocityofOtherBall * percentTotalx: -totalVelocityofOtherBall *percentTotalx;
           c[j].vely = (c[j].vely < 0) ? totalVelocityofOtherBall * percentTotaly: -totalVelocityofOtherBall *percentTotaly;
+          */
       }
       }
     }
